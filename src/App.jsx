@@ -11,7 +11,7 @@ function App() {
     <>
       <div className='App'>
         <h2>React JSON</h2>
-        <Spotify />
+        <h1> <Spotify/> </h1>
       </div>
     </>
   )
