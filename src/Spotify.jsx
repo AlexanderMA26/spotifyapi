@@ -36,8 +36,7 @@ useEffect(()=>{
 }, []);
 
 return(
-  <h3>{Token? Token: "Getting the access token..."}</h3>
+  <h3>{Token ? Token: "Getting the access token..."}</h3>
 );
 }
-
 export default Spotify;
