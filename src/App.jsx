@@ -12,8 +12,11 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 function App() {
   return (
     <Router>
+      {/Adding the link to different quiz categories./}
       <div className="App">
-        <h1>Quiz Game</h1>
+        <header><h1>Quiz Game</h1></header>
+        <title>Choose your quiz category</title>
+        
         <ul>
           <li><Link to="/books">Books</Link></li>
           <li><Link to="/music">Music</Link></li>

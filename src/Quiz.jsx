@@ -39,7 +39,9 @@ function Quiz({category, title}) {
 
   return (
       <div className='App'>
-        <h1>{title}</h1>
+        <header>
+          <h1>{title}</h1>
+        </header>
         <br></br>
 
       {/* The dynamic question rendering was a lot of GPT */}
