@@ -1,7 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import genQuiz from './QuizGen'
-import { useEffect } from 'react';
 
 function Quiz({category, title}) {
   const [quiz, setQuiz] = useState([]);
@@ -11,15 +10,15 @@ function Quiz({category, title}) {
   const [qanswers, setqanswers] = useState([]);
 
   
+  useEffect(() => {
     async function fetchQuiz() {
       const data = await genQuiz(category);
-      if (data) {
+      if (data?.results) {
         setQuiz(data.results);
-        console.log(quiz);
       }
-      
     }
     fetchQuiz();
+  }, [category]);
  
 
 
@@ -64,14 +63,20 @@ function Quiz({category, title}) {
         <div>
           <h2>Quiz finished!</h2>
           <p>Your score: {score} / {quiz.length}</p>
-          <p>Question 1 Answer: {quiz[0].correct_answer}. Your answer: {qanswers[0]}.</p>
-          <p>Question 2 Answer: {quiz[1].correct_answer}. Your answer: {qanswers[1]}.</p>
-          <p>Question 3 Answer: {quiz[2].correct_answer}. Your answer: {qanswers[2]}.</p>
-          <p>Question 4 Answer: {quiz[3].correct_answer}. Your answer: {qanswers[3]}.</p>
-          <p>Question 5 Answer: {quiz[4].correct_answer}. Your answer: {qanswers[4]}.</p>
+          {quiz.map((q, idx) => (
+            <p key={idx}>
+              Q{idx + 1} Answer: <span dangerouslySetInnerHTML={{ __html: q.correct_answer }} />. Your answer: <span dangerouslySetInnerHTML={{ __html: qanswers[idx] }} />.
+            </p>
+          ))}
         </div>
       )}
       </div>
   )
 }
 export default Quiz;
+
+
+async function fetchQuiz(category){
+  const data = await genQuiz(category);
+  return data.results;
+}

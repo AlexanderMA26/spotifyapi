@@ -27,7 +27,7 @@ function App() {
           <Route path="/music" element={<MusicQuiz />} />
           <Route path="/computers" element={<CompQuiz />} />
           <Route path="/sports" element={<SportsQuiz />} />
-          <Route path="/GenKnoq" element={<GenQuiz />} />
+          <Route path="/GenKnow" element={<GenQuiz />} />
 
         </Routes>
       </div>
